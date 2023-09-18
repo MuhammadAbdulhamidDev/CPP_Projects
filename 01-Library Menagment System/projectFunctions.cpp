@@ -136,7 +136,7 @@ void printExitMessage()
 // ------- # Part 01 ---> End Functions to display the main menu (Admin & User) ---------- //
 // ------- # Part 02 ---> Start Functions For Admin Section ------------------------------ //
 // ---------------------------- Start loginAdmin() Function ------------------------------ //
-bool loginAdmin()
+bool loginAdmin(string &mainAdminId)
 {
     while (true)
     {
@@ -158,6 +158,7 @@ bool loginAdmin()
         }
         else if (isValidAdmin(username, password, id))
         {
+            mainAdminId = id;
             printWelcomeAdminMessage(id);
             break;
         }
@@ -239,6 +240,12 @@ void printFailMessage()
     cout << "=========================================================\n";
     cout << "======== Error: Invalid username, password, or ID =======\n";
 }
+void printInvalidMainAdminMessage()
+{
+    cout << "=========================================================\n";
+    cout << "===== Sorry: This feature for the main admin only! ======\n";
+    cout << "=========================================================\n";
+}
 // // ---------------------------- End loginAdmin() Function ----------------------------- //
 // // ---------------------------- Start GetAdminChoice() Function ----------------------- //
 int getAdminChoice()
@@ -281,8 +288,13 @@ void displayAdminMenu()
 }
 // // ---------------------------- End GetAdminChoice() Function ------------------------- //
 // // ---------------------------- Start displayAdminInfo() Function --------------------- //
-void displayAdminsList()
+void displayAdminsList(string &mainAdminId)
 {
+    if (mainAdminId != "1997" && mainAdminId != "2004")
+    {
+        printInvalidMainAdminMessage();
+        return;
+    }
     printAdminsListMessage();
 
     bool found = false;
@@ -328,8 +340,13 @@ void printAdminsInfo(const Admin &admin)
 }
 // // ---------------------------- End displayAdminInfo() Function ----------------------- //
 // // ---------------------------- Start addAdmin() Function ----------------------------- //
-void addNewAdmin()
+void addNewAdmin(string &mainAdminId)
 {
+    if (mainAdminId != "1997" && mainAdminId != "2004")
+    {
+        printInvalidMainAdminMessage();
+        return;
+    }
     Admin newAdmin;
 
     while (true)
@@ -518,8 +535,14 @@ void printAddNewAdminFailMessage()
 }
 // // ---------------------------- end() addAdmin Function ------------------------------- //
 // // ---------------------------- Start deleteAmine() Function -------------------------- //
-void deleteAdmin()
+void deleteAdmin(string &mainAdminId)
 {
+    if (mainAdminId != "1997" && mainAdminId != "2004")
+    {
+        printInvalidMainAdminMessage();
+        return;
+    }
+
     Admin deletedAdmin;
 
     while (true)

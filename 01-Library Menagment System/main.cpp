@@ -68,7 +68,8 @@ main_loop:
         // ------- # Part 02 ---> Start the Admin section ------------------------------------- //
         else if (mainChoice == 1)
         {
-            if (loginAdmin())
+            string mainAdminId;
+            if (loginAdmin(mainAdminId))
             {
                 goto main_loop;
             }
@@ -85,17 +86,17 @@ main_loop:
             }
             else if (adminChoice == 1)
             {
-                displayAdminsList();
+                displayAdminsList(mainAdminId);
                 goto admin_choice;
             }
             else if (adminChoice == 2)
             {
-                addNewAdmin();
+                addNewAdmin(mainAdminId);
                 goto admin_choice;
             }
             else if (adminChoice == 3)
             {
-                deleteAdmin();
+                deleteAdmin(mainAdminId);
                 goto admin_choice;
             }
             else if (adminChoice == 4)

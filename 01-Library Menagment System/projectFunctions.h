@@ -67,7 +67,7 @@ void printExitMessage();
 // ------- # Part 01 --> End Functions to display the main menu (Admin & User) -------- //
 // ------- # Part 02 --> Start Functions For Admin Section ---------------------------- //
 // ---------------------------- Start loginAdmin() Function --------------------------- //
-bool loginAdmin();
+bool loginAdmin(string &mainAdminId);
 void getAdminData(string &username, string &password, string &id);
 void displayLoginAdminPromptMessage();
 bool isValidAdmin(const string &username, const string &password, const string &id);
@@ -75,20 +75,21 @@ bool checkOldAdminExists(const string &username, const string &password, const s
 void printWelcomeAdminMessage(const string &id);
 void printSuccessMessage();
 void printFailMessage();
+void printInvalidMainAdminMessage();
 // ---------------------------- End loginAdmin() Function ----------------------------- //
 // ---------------------------- Start displayAdminMenu() Function --------------------- //
 int getAdminChoice();
 void displayAdminMenu();
 // ---------------------------- End displayAdminMenu() Function ----------------------- //
 // ---------------------------- Start displayAdminInfo() Function --------------------- //
-void displayAdminsList();
+void displayAdminsList(string &mainAdminId);
 void printSubAdminsMessage();
 void printNoSubAdminsMessage();
 void printAdminsInfo(const Admin &admin);
 void printAdminsListMessage();
 // ---------------------------- End displayAdminInfo() Function ----------------------- //
 // ---------------------------- start addAdmin() Function ----------------------------- //
-void addNewAdmin();
+void addNewAdmin(string &mainAdminId);
 Admin getNewAdminData();
 void displayNewAdminDataEntryPrompt();
 void getAndCheckNewAdminNameValidation(string &name);
@@ -101,7 +102,7 @@ void printAddNewAdminSucceesMessage();
 void printAddNewAdminFailMessage();
 // ---------------------------- end() addAdmin Function -------------------------------- //
 // ---------------------------- Start deleteAdmin() Function --------------------------- //
-void deleteAdmin();
+void deleteAdmin(string &mainAdminId);
 void readAdminId(string &adminId);
 bool checkAdminIdValidation(string &adminId);
 bool isDeletedAdmin(string &adminId);
